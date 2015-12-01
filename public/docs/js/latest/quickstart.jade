@@ -1,85 +1,119 @@
 include ../../../_includes/_util-fns
 
 :marked
-  Let's start from zero and build a simple Angular 2 application in JavaScript.
+  Let's start from zero and build a simple Angular 2 application in JavaScript.<br>
+  我们来从零开始，用JavaScript搭建一个简单的Angular 2应用。
 
 .callout.is-helpful
   header Don't want JavaScript?
+  不想使用JavaScript？
   :marked
     Although we're getting started in JavaScript, you can also write Angular 2 apps
-    in TypeScript and Dart by selecting either of those languages from the combo-box in the banner.
+    in TypeScript and Dart by selecting either of those languages from the combo-box in the banner.<br>
+    尽管在这里我们使用JavaScript举例，你也可以在顶部的Banner中的选框里
+    选择查看使用TypeScript或Dart搭建Angular 2 app的教程。
 
 :marked
-  We'll do it in six short steps
-  1. Create a project folder
-  1. Install essential libraries
-  1. Write the root component for our application in *app.js*
-  1. Bootstrap the app
-  1. Create an *index.html*
-  1. Run it
+  We'll do it in six short steps<br>
+  完成本教程的内容只需以下六个简单的步骤：
+  1. Create a project folder<br>
+  创建项目目录
+  1. Install essential libraries<br>
+  安装基本的库
+  1. Write the root component for our application in *app.js*<br>
+  为我们存放在*app.js*的应用写一个根组件
+  1. Bootstrap the app<br>
+  为我们的app加上引导程序
+  1. Create an *index.html*<br>
+  创建一个*index.html*
+  1. Run it<br>
+  整装待发！
 
 .l-main-section
   :marked
-    ## Create a project folder
+    ## Create a project folder<br>
+    创建项目目录
 
-    **Create a new folder** to hold our application project, perhaps like this:
+    **Create a new folder** to hold our application project, perhaps like this:<br>
+    **新建一个目录**来存放我们的应用项目，一般是像这样：
     ```
     mkdir angular2-quickstart
     cd    angular2-quickstart
     ```
 .l-main-section
   :marked
-    ## Install essential libraries
+    ## Install essential libraries<br>
+    安装基本的库
 
     We'll use the **npm package manager** to install packages for
-    the libraries and development tools we need:
+    the libraries and development tools we need:<br>
+    我们会用到**npm包管理器**来安装我们需要的库和开发工具相关的包。
 
-    >angular2 - the Angular 2 library.
+    >angular2 - the Angular 2 library.<br>
+    angular2 - Angular 2 库。
 
     >[live-server](https://www.npmjs.com/package/live-server "Live-server")
-    a static file server that reloads the browser when files change.
+    a static file server that reloads the browser when files change.<br>
+    [实时预览服务器](https://www.npmjs.com/package/live-server "实时预览服务器")
+    一个静态的文件服务器，当文件被修改时，会自动重载页面。
 
     We could reference the libraries on the web or download them to our project.
     That isn't a sustainable development process and package loading with npm is really
-    easy once we have it installed.
+    easy once we have it installed.<br>
+    我们可以引用网上的库，或者直接下载下来为己所用，这么做简直麻烦得让人不能忍。
+    相比起来，只要我们安装了npm，然后用它来载入我们需要的资源，
+    相对来说就简单多了。
 
   .alert.is-helpful
     :marked
       Don't have npm? [Get it now](https://docs.npmjs.com/getting-started/installing-node "Installing Node.js and updating npm")
-      because we're going to use it now and repeatedly throughout this documentation.
+      because we're going to use it now and repeatedly throughout this documentation.<br>
+      还没安装npm吗？[现在去装也不迟。](https://docs.npmjs.com/getting-started/installing-node "安装Node.js并升级npm")
+      因为我们马上会用到它，并且接下来我们会很频繁地用到它。
 
   :marked
-    **Open** a terminal window and enter these commands:
+    **Open** a terminal window and enter these commands:<br>
+    **打开**一个终端/命令行窗口，并敲入以下的命令：
     ```
     npm init -y
     npm i angular2@2.0.0-alpha.44 --save --save-exact
     npm i live-server --save-dev
     ```
     These commands both *install* the packages and *create* an npm configuration
-    file named `package.json`.
-    The essence of our `package.json` should look like this:
+    file named `package.json`.<br>
+    这些命令*安装*了我们所需的包，并且*新建*了
+    一个名为`package.json`的npm配置文件。
+    
+    The essence of our `package.json` should look like this:<br>
+    我们的`package.json`文件的基本结构应该是这样的：
 
   +makeJson('quickstart/js/package.json', { paths: 'name, version, dependencies, devDependencies'})
 
   :marked
-    There is also a `scripts` section. **Find and replace** it with the following:
+    There is also a `scripts` section. **Find and replace** it with the following:<br>
+    还有一个`script`部分，用下面的内容替换掉：
 
   +makeJson('quickstart/js/package.json', { paths: 'scripts'})
 
   :marked
-    We've just extended our project world with a script command that we'll be running very soon.
+    We've just extended our project world with a script command that we'll be running very soon.<br>
+    我们已经用脚本命令把我们的项目拓展好了，它马上就能跑起来了！
 
 .l-main-section
   :marked
-    ##  Our first Angular component
+    ##  Our first Angular component<br>
+    我们的第一个Angular组件
 
-    Add a new file called *app.js* and paste the following lines:
+    Add a new file called *app.js* and paste the following lines:<br>
+    新建一个名叫*app.js*的文件，并且把下面几行代码粘贴进去：
 
   +makeExample('quickstart/js/app.js', 'class-w-annotations')
 
   :marked
     We're creating a visual component named **`AppComponent`** by chaining the
-    `Component` and `Class` methods that belong to the **global Angular namespace, `ng`**.
+    `Component` and `Class` methods that belong to the **global Angular namespace, `ng`**.<br>
+    通过链接属于**全局Angular命名空间`ng`**的`Component`和`Class`方法，
+    我们创建了一个名叫**`AppComponent`**的可视化组件。
 
     ```
     var AppComponent = ng
@@ -90,107 +124,156 @@ include ../../../_includes/_util-fns
     properties. The `selector` property tells Angular that this is a component
     controlling a host element named "my-app".
     Angular creates and displays an instance of our `AppComponent`
-    wherever it encounters a `my-app` element.
+    wherever it encounters a `my-app` element.<br>
+    `Component`方法有一个包含两个属性的配置对象。
+    `selector`属性告诉Angular这是一个控制着主元素，名叫“my-app”的组件。
+    Angular在每次遇到一个`my-app`元素时，都会创建并显示一个基于我们的`AppComponent`的实例。
 
     The `template` property defines the visual appearance of the component.
     We're writing the HTML template inline in this example.
     Later we'll move the HTML to a view template file and
     assign the template's filename to the `templateUrl` property.
-    We'll prefer that practice for all but the most trivial templates.
+    We'll prefer that practice for all but the most trivial templates.<br>
+    `template`属性定义了元件的的外观。
+    在这个例子中，我们用内联的方式写HTML模板。
+    后面我们会将HTML转移到一个专门的模板文件，
+    并且将其文件名指定到`templateUrl`中。
 
     The **`Class`** method is where we implement the component itself,
     giving it properties and methods that bind to the view and whatever
-    behavior is appropriate for this part of the UI.
+    behavior is appropriate for this part of the UI.<br>
+    `Class`方法是我们用来实现这个组件本身，
+    并且将绑定在UI中相应行为和外观的属性和方法赋给它。
 
     This component class has the bare minimum implementation:
     a *no-op* constructor function that does nothing because there is nothing to do.
-    We'll see more interesting component classes in future examples.
+    We'll see more interesting component classes in future examples.<br>
+    这个组件类已经有了构成它最基本的的元素：
+    一个什么都不干——因为什么都不用干——的*无操作*的构造函数。
+    我们在以后的例子中会看到更多有趣的组件类。
 
 .l-main-section
   :marked
-    ## Bootstrap the app
+    ## Bootstrap the app<br>
+    为我们的app加上引导程序
+    
     We need to do something to put our application in motion.
-    Add the following to the bottom of the `app.js` file:
+    Add the following to the bottom of the `app.js` file:<br>
+    我们要做一些事情，让我们的应用能够跑起来。
+    在`app.js`的末尾加上以下的内容。
 
   +makeExample('quickstart/js/app.js', 'bootstrap')
 
   :marked
     We'll wait for the browser to tell us that it has finished loading
-    all content and then we'll call the Angular `bootstrap` method.
+    all content and then we'll call the Angular `bootstrap` method.<br>
+    我们要等着我们的浏览器告诉我们，页面的所有内容已经加载完成了。
+    然后我们会调用Angular中的`bootstrap`方法。
 
     The `bootstrap` method tells Angular to start the application with our
-    `AppComponent` at the application root.
+    `AppComponent` at the application root<br>
     We'd be correct to guess that someday our application will
     consist of more components arising in tree-like fashion from this root.
+    `bootstrap`方法会让Angular去使用位于应用根目录的`AppComponent`启动我们的应用。
+    我们确信，以后我们的应用会由更多元件组成，他们以这个组件为根，以树状伸展开。<br>
 
-    ### Wrapped in an IIFE
+    ### Wrapped in an IIFE<br>
+    打包进IIFE
     We don't want to pollute the global namespace.
     We don't need an application namespace yet.
     So we'll surround the code in a simple IIFE
     ("Immediately Invoked Function Execution")
-    wrapper.
+    wrapper.   <br>
+    我们不想污染全局变量，目前也不需要应用程序的命名空间。
+    所以我们用一个简单的IIFE（立即调用的函数表达式）将它包裹起来。
 
-    Here is the entire file:
+    Here is the entire file:<br>
+    下面是整个文件的内容：
   +makeExample('quickstart/js/app.js', 'dsl')
 
 .l-main-section
   :marked
-    ## Create an *index.html*
+    ## Create an *index.html*<br>
+    创建一个*index.html*
 
-    **Add a new `index.html`** file to the project folder and enter the following HTML
+    **Add a new `index.html`** file to the project folder and enter the following HTML<br>
+    在项目目录下新建一个名叫`index.html`的文件，然后输入以下的HTML：
 
   +makeExample('quickstart/js/index.html', null, 'index.html')(format="")
   .l-sub-section
     :marked
-      Our app loads two script files in the `<head>` element:
+      Our app loads two script files in the `<head>` element:<br>
+      在`<head>`元素中，我们的app载入了两个脚本文件：
 
       >***angular2.sfx.dev.js***, the Angular 2 development library that puts
-      Angular in the global `ng` namespace.
+      Angular in the global `ng` namespace.<br>
+      ***angular2.sfx.dev.js***，Angular 2的开发库，将Angular放在全局的`ng`命名空间里。
 
-      >***app.js***, the application JavaScript we just wrote.
+      >***app.js***, the application JavaScript we just wrote.<br>
+      ***app.js***，我们刚刚写的JavaScript应用。
 
       In the `<body>`, there's an element called `<my-app>`.
       This is the placeholder for the *root* of the
-      application. Angular displays our application here.
+      application. Angular displays our application here.<br>
+      在`<body>`里，还有一个叫做`<my-app>`的元素。
+      它是这个应用的根占位符，Angular把我们的应用显示在这里。
 
 .l-main-section
   :marked
-    ## Run it!
+    ## Run it!<br>
+    整装待发！
 
     We need a file server to serve the static assets of our application
-    (*index.html* and *app.js*).
+    (*index.html* and *app.js*).<br>
+    我们需要一个文件服务器来承载我们这个应用的静态资源（即*index.html*和*app.js*）。
 
     For this example we'll use the **live-server** that we installed with `npm`
     because it performs a live reload by default and it's
-    fun to watch the browser update as we make changes.
+    fun to watch the browser update as we make changes.<br>
+    在这个例子中，我们会用到我们之前用`npm`安装的**实时预览服务器**，
+    因为它可以实现动态预览，我们在修改文件的时候，内容就会实时呈现出来。
+    很有趣，不是吗？
 
-    Open a terminal (or Windows/Linux command line) and enter:
+    Open a terminal (or Windows/Linux command line) and enter:<br>
+    打开终端/命令行窗口，并输入：
 
   pre.prettyprint.lang-bash
     code npm start
 
   .alert.is-helpful
     :marked
-       That's the `npm` command we added earlier to the `scripts` section of `package.json`
+       That's the `npm` command we added earlier to the `scripts` section of `package.json`<br>
+       那就是我们之前添加在`package.json`中的`scripts`单元的`npm`命令。
 
   :marked
     **live-server** loads the browser for us and refreshes the page as we make
-    changes to the application.
+    changes to the application.<br>
+    每当我们修改我们的应用时，`实时预览服务器`都会载入浏览器，并刷新页面。
 
-    In a few moments, a browser tab should open and display
+    In a few moments, a browser tab should open and display<br>
+    稍等一会儿，会自动弹出一个浏览器窗口，我们的应用会在这里显示。
 
   figure.image-display
     img(src='/resources/images/devguide/quickstart/my-first-app.png' alt="Output of quickstart app")
 
   :marked
-    ### Make some changes
-    The `live-server` detects changes to our files and refreshes the browser page for us automatically.
+    ### Make some changes<br>
+    做点儿小变化
+    
+    The `live-server` detects changes to our files and refreshes the browser page for us automatically.<br>
+    `实时预览服务器`会侦测文件的改动，并为我们自动刷新浏览器的页面。
 
     Try changing the message to "My SECOND Angular 2 app".
-    The `live-server` sees that change and reloads the browser.
+    The `live-server` sees that change and reloads the browser.<br>
+    试一试把信息改成"My SECOND Angular 2 app".<br>
+    `实时预览服务器`会感知到这个变化，并刷新页面。
 
     Keep `live-server` running in this terminal window and keep trying changes.
-    You can stop it anytime with `Ctrl-C`.
+    You can stop it anytime with `Ctrl-C`.<br>
+    让`实时预览服务器`一直在终端中运行着，然后试着做一些修改。
+    你可以在任何时候用`Ctrl-C`来终止它。
 
     **Congratulations!  We are in business** ... and ready to take
-    our app to the next level.
+    our app to the next level.<br>
+    恭喜你！咱们已经上道了……接下来我们会继续完善这个app。
+    
