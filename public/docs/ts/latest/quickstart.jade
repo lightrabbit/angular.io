@@ -2,21 +2,26 @@ include ../../../_includes/_util-fns
 
 :marked
   Let's start from zero and build a super simple Angular 2 application in TypeScript.
+
   我们来从零开始，用TypeScript搭建一个简单的Angular 2应用。
 
 .callout.is-helpful
-  header Don't want TypeScript?
+  header Don't want TypeScript?不想使用TypeScript？
+
   :marked
     Although we're getting started in TypeScript, you can also write Angular 2 apps
     in JavaScript and Dart by selecting either of those languages from the combo-box in the banner.
+
     尽管在这里我们使用TypeScript举例，你也可以在顶部的Banner中的选框里
-    选择查看使用JavaScript或Dart搭建Angular 2 app的教程。。
+    选择查看使用JavaScript或Dart搭建Angular 2 应用的教程。
 
 .l-main-section
   :marked
     ## The shortest, quickest ...
+       快速搭建...
 
     Let's put something on the screen in Angular 2 as quickly as we can.
+    我们可以使用最快的方法把angular 2显示出来。
 
   .l-sub-section
     :marked
@@ -25,21 +30,29 @@ include ../../../_includes/_util-fns
       such as [plunker](http://plnkr.co/ "Plunker"). You won't have to
       install a static server to run the app there.
 
+      也许我们即将介绍的安装安装步骤在您的开发机上没有相同的步骤，你可以选择类似相同的在线编码软件[plunker](http://plnkr.co/ "Plunker")
+      这样可以使你不用再次安装一个静态的服务器来运行应用。
+
       If you like what you see - and we think you will - you can repeat this
       exercise on your own machine later.
 
+      如果你喜欢你所见到的，那么你可以在自己的计算机上安装软件来重复的进行这个练习。
+
   :marked
     **Create a new folder** to hold our application project, perhaps like this:
+
+    **新建文件夹**用来保存我们的应用程序项目,一般是像这样：
     ```
     mkdir angular2-quickstart
     cd    angular2-quickstart
     ```
 .l-main-section
   :marked
-    ## Our first Angular component
+    ## Our first Angular component 创建第一个Angular应用
 
     **Add a new file** called **`app.ts`** and paste the following lines:
 
+    **新建一个文件**我们把它命名为**`app.ts`**并黏贴以下代码:
   +makeExample('quickstart/ts/src/app/app.ts', null, 'app.ts')
 
   :marked
@@ -48,11 +61,22 @@ include ../../../_includes/_util-fns
     Components are our primary means of creating application views
     and supporting them with application logic.
 
+    我们刚刚定义了angular 2 中的 component,
+    它是angular 2中重要的特性.
+    是我们创建应用视图的主要手段，
+    并支持处理应用程序逻辑。
+
     Ours is an empty, do-nothing class named `AppComponent`.
     It would expand with properties and application
     logic when we're ready to build a substantive application.
 
+    我们定义个空的类将它命名为 `AppComponent`  .
+    它将扩展属性和应用
+    现在我们构建一个实质性的应用程序逻辑。
+
     Above the class we see the `@Component` decoration.
+
+    上面的类中我们看到一个 `@Component` 的装饰.
 
   .l-sub-section
     :marked
@@ -60,44 +84,82 @@ include ../../../_includes/_util-fns
       A "decoration" is a TypeScript language feature
       for creating metadata about the class. Angular finds this metadata
       in the transpiled JavaScript and responds appropriately.
+
+      在方法名之前用 **@** 符号作为标识 **Component** 的装饰.
+      **"decoration"** 是TypeScript语言中的一个特性.
+      创建关于类的元素据.Angular找到这个元素据
+      在transpiled JavaScript进行适当的响应.
   :marked
     `@Component` tells Angular that this class *is an Angular component*.
     The configuration object passed to the `@Component` method has two
     fields, a `selector` and a `template`.
 
+    `@Component` 告诉Angular这个类是Angular中的component
+    配置对象传递给`@Component`的方法有两种,
+    一个是`selector` 和另一个 `template`.
+
+
     The `selector` specifies a CSS selector for a host HTML element named `my-app`.
     Angular creates and displays an instance of our `AppComponent`
     wherever it encounters a `my-app` element.
 
+    `selector`指定CSS选择器来自于HTML元素中名叫 `my-app`.
+    Angular创建在哪里遇到一个`my-app`元素将会对
+    `AppComponent`进行实例化操作
+
+
     The `template` field is the component's companion template
     that tells Angular how to render a view.
     Our template is a single line of HTML announcing "My First Angular App".
+
+    这个`template`键是组件的配套模板
+    它告诉Angular应该如何渲染视图.
+    这里的模板是一个HTML名叫"My First Angular App".
 
     The `bootstrap` method tells Angular to start the application with this
     component at the application root.
     We'd be correct to guess that someday our application will
     consist of more components arising in tree-like fashion from this root.
 
+    这个`bootstrap`方法告诉Angular启动应用程序
+    应用程序在这个目录的根
+    我们的正确的猜测，有一天我们的应用程序会有很多的组件
+    我们用树的形式将他们表现出来
+
     In the top line we imported the `Component` and `bootstrap` symbols
     from the Angular 2 library. That's the way we do things now.
     We no longer expect to find our code or any library code in a global namespace.
     We `import` exactly what we need, as we need it, from named file and library resources.
 
+    我们将上面`Component` 和 `bootstrap`导入Angular 2 库中.
+    这就是我们该做的事情.
+    我们不再期望找到我们的代码或任何库代码的全局名称空间。
+
 .l-main-section
   :marked
     ## Add `index.html`
+    添加 `index.html`
 
     **Create** an `index.html` file.
 
+    **创建** 一个 `index.html` 文件.
+
     **Paste** the following lines into it ... and we'll discuss them:
+
+    **黏贴**下面的代码...我们来讨论:
 
   +makeExample('quickstart/ts/src/index.1.html', null, 'index.html')
 
   :marked
     We see three noteworthy sections of HTML:
 
+    我们看到三个值得注意的HTML代码:
+
     1. We load JavaScript libraries from the web.
-    Let's take them on faith without further discussion.<br/><br/>
+    Let's take them on faith without further discussion.
+
+    1. 我们从网络上加载JavaScript库
+    而我们没有把它的信息进行进一步的讨论
 
     2. We configure something called `System` and ask it to import the
     application file with our `AppComponent` that we just wrote.
@@ -105,18 +167,33 @@ include ../../../_includes/_util-fns
     a tool that can `import` code;
     remember the `import` statement in our `AppComponent`?
 
+    2.我们配置一个叫 `System` 的链将它导入我的应用程序文件`AppComponent` .
+    `System`是一个系统模块加载程序(来自 `system.js` 库),
+    一个能`import`的代码;
+    记得`import` 声明在我们 `AppComponent` 中?
+
       We're also asking `system.js` to "transpile" (AKA "compile") our
       TypeScript source code into JavaScript ... right here in the browser.<br/><br/>
+
+      我们还要求`system.js`中的"transpile" (又名 "compile")
+      将我们的Typescript资源中的代码转化为JavaScript... 使它们可以在浏览器中运行
 
     3. We note the `<my-app>` tag in the `<body>`.
     That's the custom HTML element we identified in the `@Component` decoration
     adorning our `AppComponent` class.
 
+    3.我们注意到 `<my-app>` 这个标签在`<body>`.
+    这是我们定制的HTML中元素标识它来自于`@Component`装饰
+    装饰我们 `AppComponent` 类.
+
 .l-main-section
   :marked
     ## Run it!
+       运行！
 
     We need a static file server to serve our application to the browser.
+
+    我们需要一个静态文件服务器服务来应用到浏览器中.
 
   .l-sub-section
     :marked
@@ -124,33 +201,50 @@ include ../../../_includes/_util-fns
       called [live-server](https://www.npmjs.com/package/live-server "Live-server")
       with the **npm package manager**.
 
+      没有一个静态服务器方便吗？让我们来安装一个我们最爱的服务器之一
+      [live-server](https://www.npmjs.com/package/live-server "Live-server")
+      和**npm 包管理**.
+
+
       Don't have npm?
+
+      没有npm?
+
       [Get it now](https://docs.npmjs.com/getting-started/installing-node "Installing Node.js and updating npm")
       because we're going to use it now and repeatedly throughout this documentation.
 
+      [现在获取](https://docs.npmjs.com/getting-started/installing-node "Installing Node.js and updating npm")
+      因为我们要反复的使用它
+
       Once you have `npm` installed, open a terminal window and enter
+
+      一旦你安装了 `npm`, 打开一个终端窗口
 
     pre.prettyprint.lang-bash
       code npm install -g live-server
 
   :marked
     Open a terminal window and enter
+    打开一个终端窗口进入
 
   pre.prettyprint.lang-bash
       code live-server
   :marked
     In a few moments, a browser tab should open and display
+    几分钟后，一个浏览器选项卡打开并显示
 
   figure.image-display
     img(src='/resources/images/devguide/quickstart/my-first-app.png' alt="Output of quickstart app")
 
   :marked
     Congratulations!  We are in business.
+    恭喜你！我们的程序运行了
 
   .alert.is-helpful
     :marked
       If you see `Loading...` displayed instead, see the
       [Browser ES6 support appendix](#es6support).
+      如果你看到`Loading...`而不是显示的话，去看[浏览器 ES6 支持](#es6支持).
 
 .l-main-section
   :marked
