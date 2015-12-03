@@ -2,46 +2,46 @@
   "index": {
     "icon": "home",
     "title": "Angular Docs",
-    "menuTitle": "Docs Home",
-    "banner": "Angular 2 is currently in Developer Preview. We recommend using <a href='https://docs.angularjs.org/guide'>Angular 1.X</a> for production applications."
+    "menuTitle": "文档首页",
+    "banner": "Angular 2 当前还处于开发者预览状态. 我们推荐用 <a href='https://docs.angularjs.org/guide'>Angular 1.X</a> 框架来开发产品级应用."
   },
 
   "quickstart": {
     "icon": "query-builder",
-    "title": "5 Min Quickstart"
+    "title": "5分钟快速入门"
   },
 
   "tutorial": {
     "icon": "list",
-    "title": "Tutorial",
-    "banner": "Angular 2 is currently in Developer Preview. For <a href='https://docs.angularjs.org/guide'>Angular 1.X Resources</a> please visit <a href='https://angularjs.org/'>Angularjs.org</a>."
+    "title": "新手教程",
+    "banner": "Angular 2 当前还处于开发者预览状态. 关于 <a href='https://docs.angularjs.org/guide'>Angular 1.X 的资源</a> 请访问 <a href='https://angularjs.org/'>Angularjs.org</a>."
   },
 
   "guide": {
     "icon": "list",
-    "title": "Developer Guides",
-    "banner": "Angular 2 is currently in Developer Preview. For <a href='https://docs.angularjs.org/guide'>Angular 1.X Resources</a> please visit <a href='https://angularjs.org/'>Angularjs.org</a>."
+    "title": "开发者指南",
+    "banner": "Angular 2 当前还处于开发者预览状态. 关于 <a href='https://docs.angularjs.org/guide'>Angular 1.X 的资源</a> 请访问 <a href='https://angularjs.org/'>Angularjs.org</a>."
   },
 
   "testing": {
     "icon": "list",
-    "title": "Testing Guides",
-    "banner": "Angular 2 is currently in Developer Preview. For <a href='https://docs.angularjs.org/guide'>Angular 1.X Resources</a> please visit <a href='https://angularjs.org/'>Angularjs.org</a>."
+    "title": "测试指南",
+    "banner": "Angular 2 当前还处于开发者预览状态. 关于 <a href='https://docs.angularjs.org/guide'>Angular 1.X 的资源</a> 请访问 <a href='https://angularjs.org/'>Angularjs.org</a>."
   },
 
   "api": {
     "icon": "book",
-    "title": "API Preview"
+    "title": "API 预览"
   },
 
   "resources": {
     "icon": "play-circle-fill",
-    "title": "Angular Resources",
-    "banner": "Angular 2 is currently in Developer Preview. For <a href='https://docs.angularjs.org/guide'>Angular 1.X Resources</a> please visit <a href='https://angularjs.org/'>Angularjs.org</a>."
+    "title": "Angular 资源",
+    "banner": "Angular 2 当前还处于开发者预览状态. 关于 <a href='https://docs.angularjs.org/guide'>Angular 1.X 的资源</a> 请访问 <a href='https://angularjs.org/'>Angularjs.org</a>."
   },
 
   "help": {
     "icon": "chat",
-    "title": "Help & Support"
+    "title": "帮助 & 支持"
   }
 }
