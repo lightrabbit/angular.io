@@ -1,27 +1,33 @@
 .l-main-section
 
-  h2#section-displaying-controller-properties Displaying controller properties
+  h2#section-displaying-controller-properties Displaying controller properties<br>显示控制器的属性
 
 
   p.
     Let's walk through how we'd display a property, a list of properties, and then conditionally show content
-    based on state. We'll end up with a UI that looks like this:
+    based on state. We'll end up with a UI that looks like this:<br>
+    我们来看看我们如何显示一个属性，一组属性，然后让这些属性按它们的状态有选择地显示出来。
+    我们最终会做出来一个看起来是这样的东西：
 
   figure.image-display
     img(src='/resources/images/examples/displaying-data-example1.png' alt="Example of Todo App")
 
 .callout.is-helpful
-  header Typescript vs ES5
+  header Typescript vs ES5 TypeScript还是ES5？
   p.
     Although we work through the examples in TypeScript, you can also use
     regular ES5. Click the ES5 link in any code box to see the ES5 JavaScript
     version. Note that in ES5, you'd want to name your files <code>.js</code> rather than
-    <code>.ts</code>.
+    <code>.ts</code>.<br>
+    尽管我们在这里的例子用的是TypeScript，你还是可以使用常规的ES5.
+    在所有的代码显示框中，你都可以点击“ES5”查看ES5 JavaScript的版本。
+    注意，如果你使用ES5，你的文件后缀名应该是<code>.js</code>，而不是<code>.ts</code>。
 
 .l-main-section
-    h2#section-create-an-entry-point Create an entry point
+    h2#section-create-an-entry-point Create an entry point<br>建立一个入口
 
-    p Open your favorite editor and create a <code>show-properties.html</code> file with the content:
+    p Open your favorite editor and create a <code>show-properties.html</code> file with the content:<br>
+      打开你最喜欢的编辑器，然后新建一个<code>show-properties.html</code>，并填入以下内容：
 
     code-example(language="html" escape="html").
       <display></display>
@@ -29,15 +35,19 @@
     p
      | The <code>&lt;display&gt;</code> component here acts as the site where you'll insert your application.
      | We'll assume a structure like this for the rest of the examples here and just focus on the parts that
-     | are different.
+     | are different.<br>
+     | 这里的<code>&lt;display&gt;</code>组件是用来放置你的应用的。
+     | 我们以后的例子中会沿用这样的结构，只讲不同的地方。
 
 .l-main-section
-    h2#section-showing-properties-with-interpolation Showing properties with interpolation
+    h2#section-showing-properties-with-interpolation Showing properties with interpolation<br>用 interpolation 显示属性
     p.text-body
      | The simple method for binding text into templates is through interpolation where you put the name of a property
-     | inside <strong>{{ }}</strong>.
+     | inside <code>{{ }}</code>.<br>
+     | 把文本绑定到模板中很简单，只需要把属性名写在<code>{{ }}</code>里面，做一个 interpolation 就好了。
 
-    p To see this working, create another file, <code>show-properties.ts</code>, and add the following:
+    p To see this working, create another file, <code>show-properties.ts</code>, and add the following:<br>
+      如果你想看看这是怎么回事，就新建一个叫<code>show-properties.ts</code>的文件，输入以下的内容：
 
     code-tabs
       code-pane(language="javascript" name="TypeScript" format="linenums").
@@ -77,35 +87,48 @@
 
     p.
      You've just defined a component that encompasses a view and controller for the app. The view
-     defines a template:
+     defines a template:<br>
+     我们刚刚为app定义了一个包含视图和控制器的组件。视图定义了一个模板：
 
     code-example(language="html" escape="html").
       <p>My name: {{ myName }}</p>
 
     p.
      Angular will automatically pull the value of <code>myName</code> and insert it into the browser and
-     update it whenever it changes without work on your part.
+     update it whenever it changes without work on your part.<br>
+     Angular会自动推送<code>myName</code>的值，并在浏览器中显示，而且会在它的值被改变的时候实时更新。
 
     p.
      One thing to notice here is that though you've written your <code>DisplayComponent</code> class, you haven't
      called new to create one anywhere.  By associating your class with elements named 'display' in
      the DOM, Angular knows to automatically call new on <code>DisplayComponent</code> and bind its properties to
-     that part of the template.
+     that part of the template.<br>
+     在这里有一点值得注意：尽管你已经声明了<code>DisplayComponent</code>这个类，
+     但你并没有调用new来创建它。通过结合你创建的类和DOM中名叫“display”的元素，
+     Angular会自动新建一个<code>DisplayComponent</code>类的对象，
+     并且将它的属性绑定到模板中。
 
     p.
      When you're building templates, data bindings like these have access to the same scope of
      properties as your controller class does.  Here, your class is the <code>DisplayComponent</code> that has
-     just one property, myName.
+     just one property, myName.<br>
+     当你在构建模板的时候，像这样的数据绑定能够与你的构造器类访问到同样的作用域。
+     在这里，你的类就是这个只有一个“myName”属性的类<code>DisplayComponent</code>。
 
     .callout.is-helpful
-      header Note
+      header Note 注意
       p.
         While you've used <code>template:</code> to specify an inline view, for larger templates you'd
-        want to move them to a separate file and load them with <code>templateUrl:</code> instead.
+        want to move them to a separate file and load them with <code>templateUrl:</code> instead.<br>
+        尽管我们在这里用到了<code>template:</code>来指定一个行内视图，
+        对于更大的模板，你应该把它们转移到一个独立的文件，并用<code>templateUrl</code>来载入它。
 
 .l-main-section
-    h2#Create-an-array Create an array property and use NgFor on the view
-    p Moving up from a single property, create an array to display as a list.
+    h2#Create-an-array Create an array property and use NgFor on the view<br>创建一组属性，并且在视图中使用NgFor
+    
+    
+    p Moving up from a single property, create an array to display as a list.<br>
+      我们从现在显示单个属性的状态进阶一点，创建一个数组，并把他们作为一个列表显示出来。
 
     code-tabs
       code-pane(language="javascript" name="TypeScript" format="linenums").
@@ -128,7 +151,8 @@
         }
     p.
         You can then use this array in your template with the <code>NgFor</code> directive to create copies of DOM elements
-        with one for each item in the array.
+        with one for each item in the array.<br>
+        你可以用你模板里的的这个数组通过<code>NgFor</code>指令来为数组里的每一个项目建立一个DOM元素。
 
     code-tabs
       code-pane(language="javascript" name="TypeScript" format="linenums").
@@ -155,7 +179,8 @@
 
     p.
         To make this work, you'll also need to add the <code>NgFor</code> directive used by the template so
-        that Angular knows to include it:
+        that Angular knows to include it:<br>
+        要想让它起作用，你还需要添加模板会用到的<code>NgFor</code>指令，这样Angular就知道要包含它了。
 
     code-tabs
       code-pane(language="javascript" name="TypeScript" format="linenums").
@@ -177,35 +202,54 @@
           })
         ];
 
-    p Reload and you've got your list of friends!
+    p Reload and you've got your list of friends!<br>
+      重新加载页面，你就可以看到你朋友的名单啦！
+    
     p.
         Angular will mirror changes you make to this list over in the DOM. Add a new item and it appears in your
         list. Delete one and Angular deletes the &lt;li&gt;. Reorder items and Angular makes the corresponding reorder of
-        the DOM list.
-    p Let's look at the few lines that do the work again:
+        the DOM list.<br>
+        Angular将你对列表的改变镜像地反映在DOM上。
+        你在列表里新建一项，它就会出现在你的列表里。删除一项，他会删除对应的&lt;li&gt;。
+        如果你列表重新排序，Angular也会在DOM列表中相应地重新排序。
+        
+    p Let's look at the few lines that do the work again:<br>
+      咱们再来看看做这件事儿的那几行代码：
+    
     code-example(language="html" format="linenums").
       //HTML
       &lt;li *ng-for=&quot;#name of names&quot;&gt;
          {{ name }}
       &lt;/li&gt;
-    p The way to read this is:
+    p The way to read this is:<br>
+      下面来做一些说明：
+      
     ul
         li.
             <code>*ng-for</code> : create a DOM element for each item in an
             <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration_protocols">iterable</a>
-             like an array
+             like an array<br>
+            <code>*ng-for</code> : 像在数组中一样，为
+            <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Iteration_protocols">迭代器</a>
+            中的的每一个项目新建一个DOM元素。
         li <code>#name</code> : refer to individual values of the iterable as 'name'
+           <code>#name</code> : 代表迭代器的独立的值，例如“name”
         li <code>of names</code> : the iterable to use is called 'names' in the current controller
-    p Using this syntax, you can build UI lists from any iterable object.
+           <code>of names</code> : 当前控制器用到的，名叫“name”的迭代器
+    p Using this syntax, you can build UI lists from any iterable object.<br>
+      运用这样的语法，你就可以在UI上对迭代器对象建立列表了。
 .l-main-section
-    h2#Create-a-class Create a class for the array property and inject into component
+    h2#Create-a-class Create a class for the array property and inject into component<br>为属性数组创建一个类，并注入组件
 
     p.
         Before we get too much further, we should mention that putting our model (array) directly in our controller isn't
         proper form.  We should separate the concerns by having another class serve the role of model and inject it into
-        the controller.
+        the controller.<br>
+        在继续之前，我们应该明白直接把我们的模型（数组）放到控制器里是不好的。
+        我们应该新建另外一个类来给模型用，来把这些东西分开，并把它注入到控制器里。
 
-    p Make a <code>FriendsService</code> class to provide the model with the list of friends.
+    p Make a <code>FriendsService</code> class to provide the model with the list of friends.<br>
+      创建一个<code>FriendsService</code>类来给模型提供朋友的列表。
 
     code-tabs
       code-pane(language="javascript" name="TypeScript" format="linenums").
@@ -224,13 +268,17 @@
     p.
         Now replace the current list of friends in DisplayComponent by including the FriendsService in the injectables list,
         then including the service in the constructor, and finally setting the list of
-        names in DisplayComponent to the names provided by the service you passed in.
+        names in DisplayComponent to the names provided by the service you passed in.<br>
+        现在请通过以下的方式来替换掉现在的朋友列表：首先在可注射的列表包含 FriendsService，
+        然后包含构造器中的服务，最后将 DisplayComponent 中的朋友列表设置成那些服务传入的名字。
 
     .callout.is-helpful
-        header ES5 Note
+        header ES5 Note 针对ES5的小说明
         p.
             The dependency injection syntax here is using the low-level API and is...well...not very nice.  We're
-            working on sugaring the syntax to match the way it works in Angular 1.  Expect this to change soon.
+            working on sugaring the syntax to match the way it works in Angular 1.  Expect this to change soon.<br>
+            这里的依赖注入语法使用的是一个低版本API，并且……呃……并不是十分完美。
+            我们正在尝试改进这里的语法，试图让它能够像Angular 1中那样运行。但愿这个能赶快搞出来吧。
 
     code-tabs
       code-pane(language="javascript" name="TypeScript" format="linenums").
@@ -269,15 +317,20 @@
           angular.bootstrap(DisplayComponent);
         });
 .l-main-section
-    h2#Conditionally-displaying-data-with-NgIf Conditionally displaying data with NgIf
+    h2#Conditionally-displaying-data-with-NgIf Conditionally displaying data with NgIf<br>用NgIf实现有选择地显示数据
     p.
         Lastly, before we move on, let's handle showing parts of our UI conditionally with <code>NgIf</code>.  The
-        <code>NgIf</code> directive adds or removes elements from the DOM based on the expression you provide.
-    p See it in action by adding a paragraph at the end of your template
+        <code>NgIf</code> directive adds or removes elements from the DOM based on the expression you provide.<br>
+        最后，在我们继续之前，我们用<code>NgIf</code>来处理一下UI的选择展示部分。
+        <code>NgIf</code>指令可以根据你给出的表达式，在DOM中增加或删除元素。
+        
+    p See it in action by adding a paragraph at the end of your template<br>
+      在模板的最后加上下面这一段内容，看一看结果是什么样的。
     pre.prettyprint.lang-html
         code.
             &lt;p *ng-if=&quot;names.length &gt; 3&quot;&gt;You have many friends!&lt;/p&gt;
-    p You'll also need to add the <code>NgIf</code> directive so Angular knows to include it.
+    p You'll also need to add the <code>NgIf</code> directive so Angular knows to include it.<br>
+      你还要加上<code>NgIf</code>指令，Angular才会去包含它。
 
     code-tabs
       code-pane(language="javascript" name="TypeScript" format="linenums").
@@ -290,7 +343,9 @@
         directives: [angular.NgFor, angular.NgIf]
     p.
         As there are currently 6 items in the list, you'll see the message congratulating you on your many friends.
-        Remove three items from the list, reload your browser, and see that the message no longer displays.
+        Remove three items from the list, reload your browser, and see that the message no longer displays.<br>
+        因为你的列表里现在有6个项目，你会看到一条恭喜你有很多朋友的信息。
+        从列表里拿掉三个项目以后，你就会发现这条消息消失了。
 
     code-tabs
       code-pane(language="javascript" name="TypeScript" format="linenums").
